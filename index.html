@@ -102,24 +102,19 @@
         .row-el-zone:hover::after { border-color: rgba(190, 238, 0, 0.4); background: rgba(190, 238, 0, 0.05); }
         .row-relegation-zone:hover::after { border-color: rgba(255, 115, 81, 0.4); background: rgba(255, 115, 81, 0.05); }
 
-        /* Sticky Columns for Mobile responsiveness */
-        @media (max-width: 768px) {
-            .sticky-col {
-                position: sticky;
-                z-index: 10;
-            }
-            .sticky-col-pos {
-                left: 0;
-                background-color: inherit;
-            }
-            .sticky-col-name {
-                left: 60px; /* Adjust based on POS column width */
-                background-color: inherit;
-            }
-            .sticky-col-pts {
-                right: 0;
-                background-color: inherit;
-            }
+        /* Custom scrollbar for table container */
+        .custom-scrollbar::-webkit-scrollbar {
+            height: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: rgba(25, 25, 25, 0.5);
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #484848;
+            border-radius: 10px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #8eff71;
         }
     </style>
 </head>
@@ -232,7 +227,7 @@
 <button class="w-full py-3 bg-surface-bright font-headline text-xs font-bold tracking-widest uppercase hover:bg-primary hover:text-on-primary transition-colors">Assistir Agora</button>
 </div>
 </div>
-<!-- Match Card Scheduled -->
+<!-- Match Card Scheduled 1 -->
 <div class="bg-surface-container-highest relative overflow-hidden group">
 <div class="absolute left-0 top-0 bottom-0 w-1 bg-outline"></div>
 <div class="p-6">
@@ -258,7 +253,7 @@
 <button class="w-full py-3 border border-outline-variant font-headline text-xs font-bold tracking-widest uppercase hover:border-primary hover:text-primary transition-colors">Notificar-me</button>
 </div>
 </div>
-<!-- Match Card Scheduled -->
+<!-- Match Card Scheduled 2 -->
 <div class="bg-surface-container-highest relative overflow-hidden group">
 <div class="absolute left-0 top-0 bottom-0 w-1 bg-outline"></div>
 <div class="p-6">
@@ -288,203 +283,224 @@
 </div>
 </section>
 <!-- League Table Section -->
-<section class="py-24 bg-surface-container px-8">
+<section class="py-24 bg-surface-container px-4 md:px-8">
 <div class="max-w-7xl mx-auto">
-<div class="mb-12">
+<div class="mb-12 text-center md:text-left">
 <h2 class="font-headline text-4xl font-black uppercase tracking-tighter mb-2">Classificação Geral</h2>
 <p class="text-on-surface-variant font-label text-sm uppercase tracking-widest">Power Play League Pro Season 4</p>
 </div>
-<div class="overflow-x-auto -mx-8 px-8 pb-4 scrollbar-hide md:scrollbar-default">
-<table class="w-full text-left border-separate border-spacing-y-2 min-w-[900px]">
-<thead>
-<tr class="font-headline text-[10px] tracking-[0.2em] uppercase text-on-surface-variant/60">
-<th class="py-4 px-6 font-medium sticky-col sticky-col-pos bg-surface-container">POS</th>
-<th class="py-4 px-6 font-medium sticky-col sticky-col-name bg-surface-container">EQUIPA / JOGADOR</th>
-<th class="py-4 px-4 font-medium text-center">J</th>
-<th class="py-4 px-4 font-medium text-center">V</th>
-<th class="py-4 px-4 font-medium text-center">E</th>
-<th class="py-4 px-4 font-medium text-center">D</th>
-<th class="py-4 px-4 font-medium text-center">GP</th>
-<th class="py-4 px-4 font-medium text-center">GC</th>
-<th class="py-4 px-4 font-medium text-center">SG</th>
-<th class="py-4 px-6 font-medium text-right sticky-col sticky-col-pts bg-surface-container">PTS</th>
-</tr>
-</thead>
-<tbody class="font-headline">
+<div class="overflow-x-auto custom-scrollbar">
+<!-- Head Table - Grid Layout for desktop, table-like appearance -->
+<div class="min-w-[1000px] w-full">
+<div class="grid grid-cols-12 gap-0 px-6 py-4 font-headline text-[10px] tracking-[0.2em] uppercase text-on-surface-variant/60 border-b border-outline-variant/20">
+<div class="col-span-1 min-w-[60px]">POS</div>
+<div class="col-span-4 min-w-[200px]">EQUIPA / JOGADOR</div>
+<div class="col-span-6 grid grid-cols-7 text-center">
+<div>J</div>
+<div>V</div>
+<div>E</div>
+<div>D</div>
+<div>GP</div>
+<div>GC</div>
+<div>SG</div>
+</div>
+<div class="col-span-1 min-w-[80px] text-right">PTS</div>
+</div>
+<div class="mt-2 space-y-2">
 <!-- TOP 4 - Champions League Zone -->
-<tr class="bg-surface-container-high table-row-active row-cl-zone group transition-all duration-300">
-<td class="py-5 px-6 font-black text-2xl text-primary italic text-glow border-l-4 border-primary sticky-col sticky-col-pos">01</td>
-<td class="py-5 px-6 font-bold uppercase tracking-tight flex items-center gap-4 sticky-col sticky-col-name">
+<div class="grid grid-cols-12 gap-0 items-center px-6 py-5 bg-surface-container-high border-l-4 border-primary table-row-active row-cl-zone group transition-all duration-300">
+<div class="col-span-1 min-w-[60px] font-black text-2xl text-primary italic text-glow">01</div>
+<div class="col-span-4 min-w-[200px] font-bold uppercase tracking-tight flex items-center gap-4">
 <div class="w-10 h-10 bg-surface-variant flex items-center justify-center border border-outline-variant/30 flex-shrink-0">
 <span class="material-symbols-outlined text-primary text-xl">shield</span>
 </div>
-<span class="whitespace-nowrap">Nuno "Rei" Santos</span>
-</td>
-<td class="py-5 px-4 text-center font-medium">12</td>
-<td class="py-5 px-4 text-center text-on-surface-variant">10</td>
-<td class="py-5 px-4 text-center text-on-surface-variant">2</td>
-<td class="py-5 px-4 text-center text-on-surface-variant">0</td>
-<td class="py-5 px-4 text-center text-on-surface-variant">34</td>
-<td class="py-5 px-4 text-center text-on-surface-variant">12</td>
-<td class="py-5 px-4 text-center font-bold text-primary">+22</td>
-<td class="py-5 px-6 text-right font-black text-2xl text-primary sticky-col sticky-col-pts">32</td>
-</tr>
-<tr class="bg-surface-container-high table-row-active row-cl-zone group transition-all duration-300">
-<td class="py-5 px-6 font-black text-2xl text-primary italic text-glow border-l-4 border-primary sticky-col sticky-col-pos">02</td>
-<td class="py-5 px-6 font-bold uppercase tracking-tight flex items-center gap-4 sticky-col sticky-col-name">
+<span class="truncate">Nuno "Rei" Santos</span>
+</div>
+<div class="col-span-6 grid grid-cols-7 text-center font-headline text-on-surface-variant">
+<div class="font-medium text-on-surface">12</div>
+<div>10</div>
+<div>2</div>
+<div>0</div>
+<div>34</div>
+<div>12</div>
+<div class="font-bold text-primary">+22</div>
+</div>
+<div class="col-span-1 min-w-[80px] text-right font-black text-2xl text-primary">32</div>
+</div>
+<div class="grid grid-cols-12 gap-0 items-center px-6 py-5 bg-surface-container-high border-l-4 border-primary table-row-active row-cl-zone group transition-all duration-300">
+<div class="col-span-1 min-w-[60px] font-black text-2xl text-primary italic text-glow">02</div>
+<div class="col-span-4 min-w-[200px] font-bold uppercase tracking-tight flex items-center gap-4">
 <div class="w-10 h-10 bg-surface-variant flex items-center justify-center border border-outline-variant/30 flex-shrink-0">
 <span class="material-symbols-outlined text-primary text-xl">star</span>
 </div>
-<span class="whitespace-nowrap">Pedro Pro Player</span>
-</td>
-<td class="py-5 px-4 text-center font-medium">12</td>
-<td class="py-5 px-4 text-center text-on-surface-variant">9</td>
-<td class="py-5 px-4 text-center text-on-surface-variant">1</td>
-<td class="py-5 px-4 text-center text-on-surface-variant">2</td>
-<td class="py-5 px-4 text-center text-on-surface-variant">28</td>
-<td class="py-5 px-4 text-center text-on-surface-variant">15</td>
-<td class="py-5 px-4 text-center font-bold text-primary">+13</td>
-<td class="py-5 px-6 text-right font-black text-2xl text-primary sticky-col sticky-col-pts">28</td>
-</tr>
-<tr class="bg-surface-container-high table-row-active row-cl-zone group transition-all duration-300">
-<td class="py-5 px-6 font-black text-2xl text-primary italic text-glow border-l-4 border-primary sticky-col sticky-col-pos">03</td>
-<td class="py-5 px-6 font-bold uppercase tracking-tight flex items-center gap-4 sticky-col sticky-col-name">
+<span class="truncate">Pedro Pro Player</span>
+</div>
+<div class="col-span-6 grid grid-cols-7 text-center font-headline text-on-surface-variant">
+<div class="font-medium text-on-surface">12</div>
+<div>9</div>
+<div>1</div>
+<div>2</div>
+<div>28</div>
+<div>15</div>
+<div class="font-bold text-primary">+13</div>
+</div>
+<div class="col-span-1 min-w-[80px] text-right font-black text-2xl text-primary">28</div>
+</div>
+<div class="grid grid-cols-12 gap-0 items-center px-6 py-5 bg-surface-container-high border-l-4 border-primary table-row-active row-cl-zone group transition-all duration-300">
+<div class="col-span-1 min-w-[60px] font-black text-2xl text-primary italic text-glow">03</div>
+<div class="col-span-4 min-w-[200px] font-bold uppercase tracking-tight flex items-center gap-4">
 <div class="w-10 h-10 bg-surface-variant flex items-center justify-center border border-outline-variant/30 flex-shrink-0">
 <span class="material-symbols-outlined text-primary text-xl">bolt</span>
 </div>
-<span class="whitespace-nowrap">Dark Knight 7</span>
-</td>
-<td class="py-5 px-4 text-center font-medium">12</td>
-<td class="py-5 px-4 text-center text-on-surface-variant">8</td>
-<td class="py-5 px-4 text-center text-on-surface-variant">2</td>
-<td class="py-5 px-4 text-center text-on-surface-variant">2</td>
-<td class="py-5 px-4 text-center text-on-surface-variant">25</td>
-<td class="py-5 px-4 text-center text-on-surface-variant">18</td>
-<td class="py-5 px-4 text-center font-bold text-primary">+7</td>
-<td class="py-5 px-6 text-right font-black text-2xl text-primary sticky-col sticky-col-pts">26</td>
-</tr>
-<tr class="bg-surface-container-high table-row-active row-cl-zone group transition-all duration-300">
-<td class="py-5 px-6 font-black text-2xl text-primary italic text-glow border-l-4 border-primary sticky-col sticky-col-pos">04</td>
-<td class="py-5 px-6 font-bold uppercase tracking-tight flex items-center gap-4 sticky-col sticky-col-name">
+<span class="truncate">Dark Knight 7</span>
+</div>
+<div class="col-span-6 grid grid-cols-7 text-center font-headline text-on-surface-variant">
+<div class="font-medium text-on-surface">12</div>
+<div>8</div>
+<div>2</div>
+<div>2</div>
+<div>25</div>
+<div>18</div>
+<div class="font-bold text-primary">+7</div>
+</div>
+<div class="col-span-1 min-w-[80px] text-right font-black text-2xl text-primary">26</div>
+</div>
+<div class="grid grid-cols-12 gap-0 items-center px-6 py-5 bg-surface-container-high border-l-4 border-primary table-row-active row-cl-zone group transition-all duration-300">
+<div class="col-span-1 min-w-[60px] font-black text-2xl text-primary italic text-glow">04</div>
+<div class="col-span-4 min-w-[200px] font-bold uppercase tracking-tight flex items-center gap-4">
 <div class="w-10 h-10 bg-surface-variant flex items-center justify-center border border-outline-variant/30 flex-shrink-0">
 <span class="material-symbols-outlined text-primary text-xl">rocket_launch</span>
 </div>
-<span class="whitespace-nowrap">Skill Master</span>
-</td>
-<td class="py-5 px-4 text-center font-medium">12</td>
-<td class="py-5 px-4 text-center text-on-surface-variant">7</td>
-<td class="py-5 px-4 text-center text-on-surface-variant">3</td>
-<td class="py-5 px-4 text-center text-on-surface-variant">2</td>
-<td class="py-5 px-4 text-center text-on-surface-variant">22</td>
-<td class="py-5 px-4 text-center text-on-surface-variant">19</td>
-<td class="py-5 px-4 text-center font-bold text-primary">+3</td>
-<td class="py-5 px-6 text-right font-black text-2xl text-primary sticky-col sticky-col-pts">24</td>
-</tr>
+<span class="truncate">Skill Master</span>
+</div>
+<div class="col-span-6 grid grid-cols-7 text-center font-headline text-on-surface-variant">
+<div class="font-medium text-on-surface">12</div>
+<div>7</div>
+<div>3</div>
+<div>2</div>
+<div>22</div>
+<div>19</div>
+<div class="font-bold text-primary">+3</div>
+</div>
+<div class="col-span-1 min-w-[80px] text-right font-black text-2xl text-primary">24</div>
+</div>
 <!-- EUROPA LEAGUE ZONE -->
-<tr class="bg-surface-container-low table-row-active row-el-zone group transition-all duration-300">
-<td class="py-4 px-6 font-black text-xl text-tertiary-dim italic border-l-4 border-tertiary-dim sticky-col sticky-col-pos">05</td>
-<td class="py-4 px-6 font-bold uppercase tracking-tight flex items-center gap-4 sticky-col sticky-col-name">
+<div class="grid grid-cols-12 gap-0 items-center px-6 py-4 bg-surface-container-low border-l-4 border-tertiary-dim table-row-active row-el-zone group transition-all duration-300">
+<div class="col-span-1 min-w-[60px] font-black text-xl text-tertiary-dim italic">05</div>
+<div class="col-span-4 min-w-[200px] font-bold uppercase tracking-tight flex items-center gap-4">
 <div class="w-8 h-8 bg-surface-variant flex items-center justify-center border border-outline-variant/30 flex-shrink-0">
 <span class="material-symbols-outlined text-tertiary-dim text-sm">workspace_premium</span>
 </div>
-<span class="whitespace-nowrap">Fifa Wizard</span>
-</td>
-<td class="py-4 px-4 text-center">12</td>
-<td class="py-4 px-4 text-center text-on-surface-variant">6</td>
-<td class="py-4 px-4 text-center text-on-surface-variant">2</td>
-<td class="py-4 px-4 text-center text-on-surface-variant">4</td>
-<td class="py-4 px-4 text-center text-on-surface-variant">19</td>
-<td class="py-4 px-4 text-center text-on-surface-variant">16</td>
-<td class="py-4 px-4 text-center font-bold text-tertiary-dim">+3</td>
-<td class="py-4 px-6 text-right font-black text-xl text-tertiary-dim sticky-col sticky-col-pts">20</td>
-</tr>
-<tr class="bg-surface-container-low table-row-active row-el-zone group transition-all duration-300">
-<td class="py-4 px-6 font-black text-xl text-tertiary-dim italic border-l-4 border-tertiary-dim sticky-col sticky-col-pos">06</td>
-<td class="py-4 px-6 font-bold uppercase tracking-tight flex items-center gap-4 sticky-col sticky-col-name">
+<span class="truncate">Fifa Wizard</span>
+</div>
+<div class="col-span-6 grid grid-cols-7 text-center font-headline text-on-surface-variant">
+<div>12</div>
+<div>6</div>
+<div>2</div>
+<div>4</div>
+<div>19</div>
+<div>16</div>
+<div class="font-bold text-tertiary-dim">+3</div>
+</div>
+<div class="col-span-1 min-w-[80px] text-right font-black text-xl text-tertiary-dim">20</div>
+</div>
+<div class="grid grid-cols-12 gap-0 items-center px-6 py-4 bg-surface-container-low border-l-4 border-tertiary-dim table-row-active row-el-zone group transition-all duration-300">
+<div class="col-span-1 min-w-[60px] font-black text-xl text-tertiary-dim italic">06</div>
+<div class="col-span-4 min-w-[200px] font-bold uppercase tracking-tight flex items-center gap-4">
 <div class="w-8 h-8 bg-surface-variant flex items-center justify-center border border-outline-variant/30 flex-shrink-0">
 <span class="material-symbols-outlined text-tertiary-dim text-sm">groups_3</span>
 </div>
-<span class="whitespace-nowrap">Goal Machine</span>
-</td>
-<td class="py-4 px-4 text-center">12</td>
-<td class="py-4 px-4 text-center text-on-surface-variant">5</td>
-<td class="py-4 px-4 text-center text-on-surface-variant">2</td>
-<td class="py-4 px-4 text-center text-on-surface-variant">5</td>
-<td class="py-4 px-4 text-center text-on-surface-variant">15</td>
-<td class="py-4 px-4 text-center text-on-surface-variant">14</td>
-<td class="py-4 px-4 text-center font-bold text-tertiary-dim">+1</td>
-<td class="py-4 px-6 text-right font-black text-xl text-tertiary-dim sticky-col sticky-col-pts">17</td>
-</tr>
+<span class="truncate">Goal Machine</span>
+</div>
+<div class="col-span-6 grid grid-cols-7 text-center font-headline text-on-surface-variant">
+<div>12</div>
+<div>5</div>
+<div>2</div>
+<div>5</div>
+<div>15</div>
+<div>14</div>
+<div class="font-bold text-tertiary-dim">+1</div>
+</div>
+<div class="col-span-1 min-w-[80px] text-right font-black text-xl text-tertiary-dim">17</div>
+</div>
 <!-- MID TABLE -->
-<tr class="hover:bg-surface-variant transition-colors bg-surface-container">
-<td class="py-4 px-6 font-black text-lg text-on-surface-variant italic border-l-4 border-transparent sticky-col sticky-col-pos">07</td>
-<td class="py-4 px-6 font-bold uppercase tracking-tight flex items-center gap-4 text-on-surface-variant sticky-col sticky-col-name">
+<div class="grid grid-cols-12 gap-0 items-center px-6 py-4 bg-surface-container border-l-4 border-transparent hover:bg-surface-variant transition-colors group">
+<div class="col-span-1 min-w-[60px] font-black text-lg text-on-surface-variant italic">07</div>
+<div class="col-span-4 min-w-[200px] font-bold uppercase tracking-tight flex items-center gap-4 text-on-surface-variant">
 <div class="w-8 h-8 bg-surface-variant flex items-center justify-center border border-outline-variant/30 flex-shrink-0"></div>
-<span class="whitespace-nowrap">Vortex Striker</span>
-</td>
-<td class="py-4 px-4 text-center text-on-surface-variant">12</td>
-<td class="py-4 px-4 text-center text-on-surface-variant">4</td>
-<td class="py-4 px-4 text-center text-on-surface-variant">3</td>
-<td class="py-4 px-4 text-center text-on-surface-variant">5</td>
-<td class="py-4 px-4 text-center text-on-surface-variant">12</td>
-<td class="py-4 px-4 text-center text-on-surface-variant">15</td>
-<td class="py-4 px-4 text-center font-medium text-error-dim">-3</td>
-<td class="py-4 px-6 text-right font-black text-lg text-on-surface-variant sticky-col sticky-col-pts">15</td>
-</tr>
+<span class="truncate">Vortex Striker</span>
+</div>
+<div class="col-span-6 grid grid-cols-7 text-center font-headline text-on-surface-variant">
+<div>12</div>
+<div>4</div>
+<div>3</div>
+<div>5</div>
+<div>12</div>
+<div>15</div>
+<div class="font-medium text-error-dim">-3</div>
+</div>
+<div class="col-span-1 min-w-[80px] text-right font-black text-lg text-on-surface-variant">15</div>
+</div>
 <!-- RELEGATION ZONE -->
-<tr class="bg-surface-container-low table-row-active row-relegation-zone group transition-all duration-300">
-<td class="py-4 px-6 font-black text-xl text-error-dim italic border-l-4 border-error-dim sticky-col sticky-col-pos">14</td>
-<td class="py-4 px-6 font-bold uppercase tracking-tight flex items-center gap-4 sticky-col sticky-col-name">
+<div class="grid grid-cols-12 gap-0 items-center px-6 py-4 bg-surface-container-low border-l-4 border-error-dim table-row-active row-relegation-zone group transition-all duration-300">
+<div class="col-span-1 min-w-[60px] font-black text-xl text-error-dim italic">14</div>
+<div class="col-span-4 min-w-[200px] font-bold uppercase tracking-tight flex items-center gap-4">
 <div class="w-8 h-8 bg-surface-variant flex items-center justify-center border border-outline-variant/30 flex-shrink-0">
 <span class="material-symbols-outlined text-error-dim text-sm">dangerous</span>
 </div>
-<span class="whitespace-nowrap">Joystick Junkie</span>
-</td>
-<td class="py-4 px-4 text-center">12</td>
-<td class="py-4 px-4 text-center text-on-surface-variant">1</td>
-<td class="py-4 px-4 text-center text-on-surface-variant">3</td>
-<td class="py-4 px-4 text-center text-on-surface-variant">8</td>
-<td class="py-4 px-4 text-center text-on-surface-variant">8</td>
-<td class="py-4 px-4 text-center text-on-surface-variant">24</td>
-<td class="py-4 px-4 text-center font-bold text-error-dim">-16</td>
-<td class="py-4 px-6 text-right font-black text-xl text-error-dim sticky-col sticky-col-pts">6</td>
-</tr>
-<tr class="bg-surface-container-low table-row-active row-relegation-zone group transition-all duration-300">
-<td class="py-4 px-6 font-black text-xl text-error-dim italic border-l-4 border-error-dim sticky-col sticky-col-pos">15</td>
-<td class="py-4 px-6 font-bold uppercase tracking-tight flex items-center gap-4 sticky-col sticky-col-name">
+<span class="truncate">Joystick Junkie</span>
+</div>
+<div class="col-span-6 grid grid-cols-7 text-center font-headline text-on-surface-variant">
+<div>12</div>
+<div>1</div>
+<div>3</div>
+<div>8</div>
+<div>8</div>
+<div>24</div>
+<div class="font-bold text-error-dim">-16</div>
+</div>
+<div class="col-span-1 min-w-[80px] text-right font-black text-xl text-error-dim">6</div>
+</div>
+<div class="grid grid-cols-12 gap-0 items-center px-6 py-4 bg-surface-container-low border-l-4 border-error-dim table-row-active row-relegation-zone group transition-all duration-300">
+<div class="col-span-1 min-w-[60px] font-black text-xl text-error-dim italic">15</div>
+<div class="col-span-4 min-w-[200px] font-bold uppercase tracking-tight flex items-center gap-4">
 <div class="w-8 h-8 bg-surface-variant flex items-center justify-center border border-outline-variant/30 flex-shrink-0">
 <span class="material-symbols-outlined text-error-dim text-sm">dangerous</span>
 </div>
-<span class="whitespace-nowrap">The Beginner</span>
-</td>
-<td class="py-4 px-4 text-center">12</td>
-<td class="py-4 px-4 text-center text-on-surface-variant">1</td>
-<td class="py-4 px-4 text-center text-on-surface-variant">1</td>
-<td class="py-4 px-4 text-center text-on-surface-variant">10</td>
-<td class="py-4 px-4 text-center text-on-surface-variant">5</td>
-<td class="py-4 px-4 text-center text-on-surface-variant">32</td>
-<td class="py-4 px-4 text-center font-bold text-error-dim">-27</td>
-<td class="py-4 px-6 text-right font-black text-xl text-error-dim sticky-col sticky-col-pts">4</td>
-</tr>
-<tr class="bg-surface-container-low table-row-active row-relegation-zone group transition-all duration-300">
-<td class="py-4 px-6 font-black text-xl text-error-dim italic border-l-4 border-error-dim sticky-col sticky-col-pos">16</td>
-<td class="py-4 px-6 font-bold uppercase tracking-tight flex items-center gap-4 sticky-col sticky-col-name">
+<span class="truncate">The Beginner</span>
+</div>
+<div class="col-span-6 grid grid-cols-7 text-center font-headline text-on-surface-variant">
+<div>12</div>
+<div>1</div>
+<div>1</div>
+<div>10</div>
+<div>5</div>
+<div>32</div>
+<div class="font-bold text-error-dim">-27</div>
+</div>
+<div class="col-span-1 min-w-[80px] text-right font-black text-xl text-error-dim">4</div>
+</div>
+<div class="grid grid-cols-12 gap-0 items-center px-6 py-4 bg-surface-container-low border-l-4 border-error-dim table-row-active row-relegation-zone group transition-all duration-300">
+<div class="col-span-1 min-w-[60px] font-black text-xl text-error-dim italic">16</div>
+<div class="col-span-4 min-w-[200px] font-bold uppercase tracking-tight flex items-center gap-4">
 <div class="w-8 h-8 bg-surface-variant flex items-center justify-center border border-outline-variant/30 flex-shrink-0">
 <span class="material-symbols-outlined text-error-dim text-sm">skull</span>
 </div>
-<span class="whitespace-nowrap">AFK Master</span>
-</td>
-<td class="py-4 px-4 text-center">12</td>
-<td class="py-4 px-4 text-center text-on-surface-variant">0</td>
-<td class="py-4 px-4 text-center text-on-surface-variant">1</td>
-<td class="py-4 px-4 text-center text-on-surface-variant">11</td>
-<td class="py-4 px-4 text-center text-on-surface-variant">2</td>
-<td class="py-4 px-4 text-center text-on-surface-variant">45</td>
-<td class="py-4 px-4 text-center font-bold text-error-dim">-43</td>
-<td class="py-4 px-6 text-right font-black text-xl text-error-dim sticky-col sticky-col-pts">1</td>
-</tr>
-</tbody>
-</table>
+<span class="truncate">AFK Master</span>
+</div>
+<div class="col-span-6 grid grid-cols-7 text-center font-headline text-on-surface-variant">
+<div>12</div>
+<div>0</div>
+<div>1</div>
+<div>11</div>
+<div>2</div>
+<div>45</div>
+<div class="font-bold text-error-dim">-43</div>
+</div>
+<div class="col-span-1 min-w-[80px] text-right font-black text-xl text-error-dim">1</div>
+</div>
+</div>
+</div>
 </div>
 <div class="mt-8 flex flex-wrap gap-6 text-[10px] font-headline tracking-widest uppercase text-on-surface-variant/60">
 <div class="flex items-center gap-2"><div class="w-2 h-2 bg-primary"></div> Champions League Zone</div>
@@ -520,27 +536,27 @@
 <!-- Footer -->
 <footer class="w-full py-12 px-8 border-t border-[#484848]/20 bg-[#000000]">
 <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12">
-<div class="col-span-1 md:col-span-1">
+<div class="col-span-1 md:col-span-1 text-center md:text-left">
 <div class="text-xl font-black text-[#39FF14] font-['Space_Grotesk'] uppercase mb-6">POWER PLAY</div>
 <p class="font-['Manrope'] text-xs tracking-widest uppercase text-gray-500 leading-relaxed">
                     © 2024 POWER PLAY E-SPORTS. ENGINEERED FOR COMPETITION.
                 </p>
 </div>
-<div class="col-span-1">
+<div class="col-span-1 text-center md:text-left">
 <h4 class="text-[#39FF14] font-['Space_Grotesk'] font-bold text-xs tracking-widest uppercase mb-6">EXPLORE</h4>
 <ul class="space-y-4 font-['Manrope'] text-xs tracking-widest uppercase text-gray-500">
 <li><a class="hover:text-[#39FF14] transition-colors duration-300" href="#">PRIVACY POLICY</a></li>
 <li><a class="hover:text-[#39FF14] transition-colors duration-300" href="#">TERMS OF SERVICE</a></li>
 </ul>
 </div>
-<div class="col-span-1">
+<div class="col-span-1 text-center md:text-left">
 <h4 class="text-[#39FF14] font-['Space_Grotesk'] font-bold text-xs tracking-widest uppercase mb-6">COMPANY</h4>
 <ul class="space-y-4 font-['Manrope'] text-xs tracking-widest uppercase text-gray-500">
 <li><a class="hover:text-[#39FF14] transition-colors duration-300" href="#">PARTNERSHIPS</a></li>
 <li><a class="hover:text-[#39FF14] transition-colors duration-300" href="#">CAREERS</a></li>
 </ul>
 </div>
-<div class="col-span-1">
+<div class="col-span-1 text-center md:text-left">
 <h4 class="text-[#39FF14] font-['Space_Grotesk'] font-bold text-xs tracking-widest uppercase mb-6">RESOURCES</h4>
 <ul class="space-y-4 font-['Manrope'] text-xs tracking-widest uppercase text-gray-500">
 <li><a class="hover:text-[#39FF14] transition-colors duration-300" href="#">SUPPORT</a></li>
